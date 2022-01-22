@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 const countsRouter = require('./routes/counts');
+const getRouter = require('./routes/get');
 const addRouter = require('./routes/add');
-var usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/counts', countsRouter);
 app.use('/add', addRouter);
+app.use('/get', getRouter);
 // app.use('/users', usersRouter);
 
 // app.post('/add', async(req, res) => doAdd(req, res));

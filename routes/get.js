@@ -17,9 +17,8 @@ router.post('/', async function(req, res, next) {
   }
   try {
     const client = await pool.connect();
-    await client.query(`UPDATE counts SET amount = amount + 1 WHERE name = '${name}'`);
-    const updated = await client.query(`SELECT * FROM counts WHERE name='${name}'`);
-    res.json(updated.rows);
+    const result = await client.query(`SELECT * FROM counts WHERE name='${name}'`);
+    res.json(result.rows);
     client.release();
   } catch (err) {
     console.error(err);
