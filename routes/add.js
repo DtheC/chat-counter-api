@@ -11,7 +11,8 @@ const pool = new Pool({
 
 /* GET home page. */
 router.post('/', async function(req, res, next) {
-  const name = req.body.name;
+  const name = req.query.name;
+  // console.log(req.body);
   if (!name) {
     res.send("Error: no name parameter");
     return;
