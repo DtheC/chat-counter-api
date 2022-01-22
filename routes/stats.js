@@ -20,7 +20,7 @@ router.get('/', async function(req, res, next) {
     const result = await client.query('SELECT * FROM counts');
     
     const m = {
-      message: constructLines(result)
+      message: constructLines(result.rows)
     };
 
     res.json(m);
