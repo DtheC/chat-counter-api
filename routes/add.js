@@ -10,10 +10,15 @@ const pool = new Pool({
 });
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.post('/', async function(req, res, next) {
+  const name = req.body.name;
+  if (!name) {
+    res.send("Error: no name parameter");
+    return;
+  }
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM counts');
+    const result = await client.query(`SELECT * FROM counts WHERE name='${name}'`);
     // const results = { 'results': (result) ? result.rows : null};
     res.json(result.rows);
     // res.render('pages/db', results );
