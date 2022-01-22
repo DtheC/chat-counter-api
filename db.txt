@@ -1,0 +1,5 @@
+create table counts (name text PRIMARY KEY , amount integer);
+		insert into counts (name, amount) values ('chatDamage', 234);
+		insert into counts (name, amount) values ('promisesKept', 3);
+		insert into counts (name, amount) values ('promisesBroken', 999);
+		select * from counts;

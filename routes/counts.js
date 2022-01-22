@@ -13,7 +13,7 @@ const pool = new Pool({
 router.get('/', async function(req, res, next) {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test_table');
+    const result = await client.query('SELECT * FROM counts');
     const results = { 'results': (result) ? result.rows : null};
     res.json(result);
     // res.render('pages/db', results );
