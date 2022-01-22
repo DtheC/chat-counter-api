@@ -9,7 +9,7 @@ const pool = new Pool({
   }
 });
 
-router.post('/', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   const name = req.query.name;
   if (!name) {
     res.send("Error: no name parameter");
