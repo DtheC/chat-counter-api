@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 const constructLines = (resultsArray) => {
-  return resultsArray.map(x => x.message.replace('{0}', x.amount));
+  return resultsArray.map(x => x.message.replace('{0}', x.amount)).join(' ');
 }
 
 /* GET home page. */
