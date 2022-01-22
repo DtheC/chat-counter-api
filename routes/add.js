@@ -20,6 +20,8 @@ router.get('/', async function(req, res, next) {
     await client.query(`UPDATE counts SET amount = amount + 1 WHERE name = '${name}'`);
     const updated = await client.query(`SELECT * FROM counts WHERE name='${name}'`);
     res.json(updated.rows);
+    const o = updated.rows[0];
+    res.json({message: o.addition.replace('{0}', o.amount)});
     client.release();
   } catch (err) {
     console.error(err);

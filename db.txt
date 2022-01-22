@@ -1,8 +1,15 @@
-create table counts (name text PRIMARY KEY , amount integer, message0 text, message1 text, message text);
-		insert into counts (name, amount, message0, message1, message) values ('chatDamage', 0, 'Has not taken damage even ONCE due to chat distractions.', 'Taken damage only once due to chat.', 'Taken damage due to chat at least {0} times');
-		insert into counts (name, amount, message0, message1, message) values ('promisesKept', 0, 'Not kept a single promise to chat (but maybe because he hasn''t made any?)', 'Kept one promise to chat.', 'Kept at least {0} promises made to chat.');
-		insert into counts (name, amount, message0, message1, message) values ('promisesBroken', 0, 'Not broken a promise to chat... yet', 'Broken one promise to chat', 'Broken {0} promises to chat.');
-		select * from counts;
+create table counts (name text PRIMARY KEY , amount integer, message text, addition text);
+
+insert into counts (name, amount, message, addition) values ('chatDamage', 0, 'Taken damage due to chat at least {0} times.', 'Imagine looking at chat {0} times and taking damage. Imagine being that person.');
+
+insert into counts (name, amount, message, addition) values ('promisesKept', 0, 'Kept at least {0} promises made to chat.', 'Niko has kept a promise he made to chat {0} times. I guess we can''t be disappointed in him today.');
+
+insert into counts (name, amount, message, addition) values ('promisesBroken', 0, 'Broken {0} promises to chat.', 'Niko has broken a promise he made to chat {0} times. We''re not mad, just disappointed.');
+
+select * from counts;
+
+
+___
 
 {
 name: chatDamage
@@ -10,4 +17,5 @@ amount: 0
 message0: Has not taken damage even ONCE due to chat distractions.
 message1: Taken damage only once due to chat.
 message: Taken damage due to chat at least {0} times
+messageAddition: Imagine looking at chat {0} times and taking damage. Imagine being that person.
 }

@@ -28,13 +28,11 @@ $(eval
 
 // Stats:
 
-$(eval 
+  $(eval 
 
-  let message = '';
-  const api = $(urlfetch json https://shielded-meadow-84535.herokuapp.com/counts);
-  for (let i =0; i < api.length; i++) {
-    message += `${api[i].name} - ${api[i].amount}`;
-    if (i < api.length -1) message += ' | ';
-  }
-  message
-  )
+    let message = '';
+    const api = $(urlfetch json https://shielded-meadow-84535.herokuapp.com/stats);
+    api.message;
+    )
+
+  
