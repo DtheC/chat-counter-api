@@ -1,9 +1,13 @@
-create table counts (name text PRIMARY KEY , amount integer);
-		insert into counts (name, amount) values ('chatDamage', 234);
-		insert into counts (name, amount) values ('promisesKept', 3);
-		insert into counts (name, amount) values ('promisesBroken', 999);
+create table counts (name text PRIMARY KEY , amount integer, message0 text, message1 text, message text);
+		insert into counts (name, amount, message0, message1, message) values ('chatDamage', 0, 'Has not taken damage even ONCE due to chat distractions.', 'Taken damage only once due to chat.', 'Taken damage due to chat at least {0} times');
+		insert into counts (name, amount, message0, message1, message) values ('promisesKept', 0, 'Not kept a single promise to chat (but maybe because he hasn''t made any?)', 'Kept one promise to chat.', 'Kept at least {0} promises made to chat.');
+		insert into counts (name, amount, message0, message1, message) values ('promisesBroken', 0, 'Not broken a promise to chat... yet', 'Broken one promise to chat', 'Broken {0} promises to chat.');
 		select * from counts;
 
-
-Docker setup:
-https://towardsdatascience.com/local-development-set-up-of-postgresql-with-docker-c022632f13ea
+{
+name: chatDamage
+amount: 0
+message0: Has not taken damage even ONCE due to chat distractions.
+message1: Taken damage only once due to chat.
+message: Taken damage due to chat at least {0} times
+}
