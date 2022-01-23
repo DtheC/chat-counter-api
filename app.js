@@ -10,9 +10,11 @@ const getRouter = require('./routes/get');
 const addRouter = require('./routes/add');
 const statsRouter = require('./routes/stats');
 
+require('./data-models/count');
+
 // const { Sequelize} = require("sequelize");
 // const sequelize = new Sequelize('sqlite::memory:');
-const sequelize = require('./sequalize');
+const sequelize = require('./sequelize');
 
 
 var app = express();
