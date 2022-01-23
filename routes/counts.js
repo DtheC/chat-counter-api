@@ -1,15 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const pool = require('../pool');
+const sequelize = require('../sequelize');
 
 router.get('/', async function(req, res, next) {
   try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM counts');
-    res.json(result.rows);
-    client.release();
+    const counts = await sequelize.models.Count.findAll();
+    res.json(counts);
   } catch (err) {
-    res.json({message: 'Error :('});
+    res.json({message: 'Error connecting to database or table'});
   }
 });
 

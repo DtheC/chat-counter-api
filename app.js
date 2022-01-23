@@ -8,7 +8,15 @@ var indexRouter = require('./routes/index');
 const countsRouter = require('./routes/counts');
 const getRouter = require('./routes/get');
 const addRouter = require('./routes/add');
+const setRouter = require('./routes/set');
 const statsRouter = require('./routes/stats');
+
+require('./data-models/count');
+
+// const { Sequelize} = require("sequelize");
+// const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = require('./sequelize');
+
 
 var app = express();
 
@@ -27,6 +35,28 @@ app.use('/counts', countsRouter);
 app.use('/add', addRouter);
 app.use('/get', getRouter);
 app.use('/stats', statsRouter);
+app.use('/set', setRouter);
+app.use('/edit/:name', async (req, res) => {
+  sequelize.models.Count.findOne({
+    where: {
+      name: req.params.name
+    }
+  }).then(val => {
+    res.render('edit', { title: 'Express', val});
+  });
+})
+app.use('/new', async (req, res) => {
+    res.render('add', { title: 'Express'});
+})
+
+app.get('/sql', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json(['Connection has been established successfully.'])
+  } catch (error) {
+    res.json(['Unable to connect to the database:', error]);
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

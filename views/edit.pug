@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= val.name
+  form(action="/set", method="post")
+    input(type='hidden' name='name' value=val.name access='false')
+    .formbuilder-text.form-group.field-text-1642906452686
+      label.formbuilder-text-label
+      | API Key
+      br
+      input.form-control(type='text' placeholder='API Key (required to change data)' name='apiKey' access='false' autocomplete="off")
+    .formbuilder-text.form-group.field-text-1642906452686
+      label.formbuilder-text-label
+        | !add Message
+        br
+        input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' access='false' value=val.addition)
+    .formbuilder-text.form-group.field-text-1642906506876
+      label.formbuilder-text-label
+        | !stats Message
+        br
+      input.form-control(type='text' placeholder='Has been done {0} times.' name='message' access='false' value=val.message)
+    .formbuilder-number.form-group.field-number-1642906564934
+      label.formbuilder-number-label
+        | Current Value
+        br
+        input.form-control.form-control-number(type='number' placeholder='0' name='amount' access='false' value=val.amount)
+    .form-button-row
+      .formbuilder-button.form-group.field-submit
+        button.submit.btn-default.btn(type='submit' name='action' value='submit' access='false' style='default') Submit Changes
+        br
+      .formbuilder-button.form-group.field-delete
+        button.delete.btn-danger.btn(type='submit' name='action' value='delete' access='false' style='danger') Delete
+

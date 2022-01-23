@@ -6,3 +6,29 @@ body {
 a {
   color: #00B7FF;
 }
+
+.form-group {
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.form-control-number {
+  width: auto;
+}
+
+.btn-danger {
+  color: white;
+  background-color: rgb(206, 87, 87);
+}
+
+.form-button-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.field-delete {
+  text-align: right;
+}
