@@ -10,6 +10,11 @@ const getRouter = require('./routes/get');
 const addRouter = require('./routes/add');
 const statsRouter = require('./routes/stats');
 
+// const { Sequelize} = require("sequelize");
+// const sequelize = new Sequelize('sqlite::memory:');
+const sequelize = require('./sequalize');
+
+
 var app = express();
 
 // view engine setup
@@ -27,6 +32,15 @@ app.use('/counts', countsRouter);
 app.use('/add', addRouter);
 app.use('/get', getRouter);
 app.use('/stats', statsRouter);
+
+app.get('/sql', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json(['Connection has been established successfully.'])
+  } catch (error) {
+    res.json(['Unable to connect to the database:', error]);
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
