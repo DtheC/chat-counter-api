@@ -4,12 +4,11 @@ var router = express.Router();
 const sequelize = require('../sequelize');
 
 router.post('/', async function(req, res, next) {
-  console.log(req.body);
   const apiKey = req.body.apiKey;
-  // if (apiKey !== process.env.API_KEY) {
-  //   res.json({message: 'API key missing or incorrect'});
-  //   return;
-  // }
+  if (apiKey !== process.env.API_KEY) {
+    res.json({message: 'API key missing or incorrect'});
+    return;
+  }
   const {name, amount, message, addition, action} = req.body;
   if (!name) {
     res.json({message: "Error: no name parameter"});
@@ -25,6 +24,8 @@ router.post('/', async function(req, res, next) {
           name: name
         }
       });
+    } else if(action === 'create') {
+      await sequelize.models.Count.create({name, amount, message, addition});
     } else {
       await sequelize.models.Count.update({name, amount, message, addition}, {
         where: {

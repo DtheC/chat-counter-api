@@ -45,6 +45,9 @@ app.use('/edit/:name', async (req, res) => {
     res.render('edit', { title: 'Express', val});
   });
 })
+app.use('/new', async (req, res) => {
+    res.render('add', { title: 'Express'});
+})
 
 app.get('/sql', async (req, res) => {
   try {
