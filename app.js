@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 const countsRouter = require('./routes/counts');
 const getRouter = require('./routes/get');
 const addRouter = require('./routes/add');
+const setRouter = require('./routes/set');
 const statsRouter = require('./routes/stats');
 
 require('./data-models/count');
@@ -34,6 +35,16 @@ app.use('/counts', countsRouter);
 app.use('/add', addRouter);
 app.use('/get', getRouter);
 app.use('/stats', statsRouter);
+app.use('/set', setRouter);
+app.use('/edit/:name', async (req, res) => {
+  sequelize.models.Count.findOne({
+    where: {
+      name: req.params.name
+    }
+  }).then(val => {
+    res.render('edit', { title: 'Express', val});
+  });
+})
 
 app.get('/sql', async (req, res) => {
   try {
