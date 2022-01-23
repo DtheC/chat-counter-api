@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const pool = require('../pool');
+const sequelize = require('../sequelize');
 
 router.get('/', async function(req, res, next) {
   const name = req.query.name;
@@ -9,12 +9,18 @@ router.get('/', async function(req, res, next) {
     return;
   }
   try {
-    const client = await pool.connect();
-    await client.query(`UPDATE counts SET amount = amount + 1 WHERE name = '${name}'`);
-    const updated = await client.query(`SELECT * FROM counts WHERE name='${name}'`);
-    const o = updated.rows[0];
-    res.json({message: o.addition.replace('{0}', o.amount)});
-    client.release();
+    const added = await sequelize.models.Count.findOne({
+      where: {
+        name: name
+      }
+    });
+    if (added === null) {
+      res.json({message: `Error: no counter with name ${name} exists`});
+      return;
+    }
+    await added.increment('amount');
+    await added.reload();
+    res.json({message: added.getAddition()});
   } catch (err) {
     res.json({message: 'Error :('});
   }

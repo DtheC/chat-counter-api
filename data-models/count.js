@@ -23,11 +23,11 @@ Count.init({
   },
   message: {
     type: DataTypes.TEXT,
-    defaultValue: '{0} times.'
+    defaultValue: 'Done it {0} times.'
   },
   addition: {
     type: DataTypes.TEXT,
-    defaultValue: '{0} times.'
+    defaultValue: 'Added a new one so now it\'s been done {0} times.'
   }
 }, {
   sequelize,
@@ -36,8 +36,8 @@ Count.init({
 
 (async () => {
   await sequelize.sync();
-  // Count.create({name: 'chatDamage'});
-  // Count.create({name: 'promisesKept'});
+  Count.create({name: 'chatDamage'});
+  Count.create({name: 'promisesKept'});
 })();
 
 module.exports = Count;
