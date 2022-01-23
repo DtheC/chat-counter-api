@@ -27,9 +27,6 @@ app.use('/counts', countsRouter);
 app.use('/add', addRouter);
 app.use('/get', getRouter);
 app.use('/stats', statsRouter);
-// app.use('/users', usersRouter);
-
-// app.post('/add', async(req, res) => doAdd(req, res));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,10 +43,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-doAdd = (req, res) => {
-  console.log(req.query);
-  res.json(req.query);
-}
 
 module.exports = app;
