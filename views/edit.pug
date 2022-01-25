@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  h1= val.name
+  h1= countData.name
+  p Any use of {0} in the Add or Stats message will be replaced with the current value of the counter when called in Nightbot.
   form(action="/set", method="post")
-    input(type='hidden' name='name' value=val.name access='false')
+    input(type='hidden' name='name' value=countData.name access='false')
     .formbuilder-text.form-group.field-text-1642906452686
       label.formbuilder-text-label
       | API Key
@@ -13,17 +14,17 @@ block content
       label.formbuilder-text-label
         | !add Message
         br
-        input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' access='false' value=val.addition)
+        input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' access='false' value=countData.addition)
     .formbuilder-text.form-group.field-text-1642906506876
       label.formbuilder-text-label
         | !stats Message
         br
-      input.form-control(type='text' placeholder='Has been done {0} times.' name='message' access='false' value=val.message)
+      input.form-control(type='text' placeholder='Has been done {0} times.' name='message' access='false' value=countData.message)
     .formbuilder-number.form-group.field-number-1642906564934
       label.formbuilder-number-label
         | Current Value
         br
-        input.form-control.form-control-number(type='number' placeholder='0' name='amount' access='false' value=val.amount)
+        input.form-control.form-control-number(type='number' placeholder='0' name='amount' access='false' value=countData.amount)
     .form-button-row
       .formbuilder-button.form-group.field-submit
         button.submit.btn-default.btn(type='submit' name='action' value='submit' access='false' style='default') Submit Changes
@@ -31,3 +32,12 @@ block content
       .formbuilder-button.form-group.field-delete
         button.delete.btn-danger.btn(type='submit' name='action' value='delete' access='false' style='danger') Delete
 
+  br
+  br
+  br
+
+  h2 Nightbot Commands
+  h3 Get a message with the count:
+  pre $(eval const api = $(urlfetch json #{windowUrl}/get?name=chatDamage); api.message )
+  h3 Add one to the count:
+  pre $(eval const api = $(urlfetch json #{windowUrl}/add?name=chatDamage); api.message )

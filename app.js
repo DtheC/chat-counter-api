@@ -41,8 +41,8 @@ app.use('/edit/:name', async (req, res) => {
     where: {
       name: req.params.name
     }
-  }).then(val => {
-    res.render('edit', { title: 'Express', val});
+  }).then(countData => {
+    res.render('edit', { title: 'Express', countData, windowUrl: req.get('host')});
   });
 })
 app.use('/new', async (req, res) => {
