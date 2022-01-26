@@ -5,7 +5,19 @@ block content
   p Select a counter to edit.
   each val in counts
     +item(val)
-  a(href='/new') Add New
+  b
+    a(href='/new') Add New
+
+  br
+  br
+  br
+
+  h2 Nightbot Command
+  h3 Get stats of all counters.
+  pre $(eval const api = $(urlfetch json #{windowUrl}/stats); api.message; )
+  h4 Preview: 
+  pre #{statsPreview}
+
 
 mixin item(val)
   .item-row
