@@ -13,10 +13,7 @@ const statsRouter = require('./routes/stats');
 
 require('./data-models/count');
 
-// const { Sequelize} = require("sequelize");
-// const sequelize = new Sequelize('sqlite::memory:');
 const sequelize = require('./sequelize');
-
 
 var app = express();
 
@@ -42,11 +39,11 @@ app.use('/edit/:name', async (req, res) => {
       name: req.params.name
     }
   }).then(countData => {
-    res.render('edit', { title: 'Express', countData, windowUrl: req.get('host')});
+    res.render('edit', { title: 'Edit', countData, windowUrl: req.get('host')});
   });
 })
 app.use('/new', async (req, res) => {
-    res.render('add', { title: 'Express'});
+    res.render('add', { title: 'Add New'});
 })
 
 app.get('/sql', async (req, res) => {
