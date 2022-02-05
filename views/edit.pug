@@ -25,6 +25,11 @@ block content
         | Current Value
         br
         input.form-control.form-control-number(type='number' placeholder='0' name='amount' access='false' value=countData.amount)
+    .formbuilder-number.form-group.field-number-16429065642
+      label.formbuilder-number-label
+        | Show in !stats?
+        br
+        input.form-control.form-control-number(type='checkbox' name='showInStats' access='false' value=countData.showInStats checked=countData.showInStats)
     .form-button-row
       .formbuilder-button.form-group.field-submit
         button.submit.btn-default.btn(type='submit' name='action' value='submit' access='false' style='default') Submit Changes

@@ -8,6 +8,5 @@ if (process.env.NODE_ENV == "production") {
     }
   });
 } else {
-  console.log('dev')
   module.exports = new Sequelize('sqlite::memory:');
 }

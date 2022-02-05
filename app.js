@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -44,15 +48,6 @@ app.use('/edit/:name', async (req, res) => {
 })
 app.use('/new', async (req, res) => {
     res.render('add', { title: 'Add New'});
-})
-
-app.get('/sql', async (req, res) => {
-  try {
-    await sequelize.authenticate();
-    res.json(['Connection has been established successfully.'])
-  } catch (error) {
-    res.json(['Unable to connect to the database:', error]);
-  }
 })
 
 // catch 404 and forward to error handler

@@ -28,6 +28,11 @@ Count.init({
   addition: {
     type: DataTypes.TEXT,
     defaultValue: 'Added a new one so now it\'s been done {0} times.'
+  },
+  showInStats: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   }
 }, {
   sequelize,
