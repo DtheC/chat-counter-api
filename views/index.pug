@@ -14,7 +14,7 @@ block content
 
   h2 Nightbot Command
   h3 Get stats of all counters.
-  pre $(eval const api = $(urlfetch json #{windowUrl}/stats); api.message; )
+  pre $(eval const api = $(urlfetch json https://#{windowUrl}/stats); api.message; )
   h4 Preview: 
   pre #{statsPreview}
 
