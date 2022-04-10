@@ -39,11 +39,11 @@ Count.init({
   modelName: 'Count'
 });
 
-// (async () => {
-//   await sequelize.sync();
-//   Count.create({name: 'chatDamage', message: 'Taken damage due to chat at least {0} times.', addition: 'Imagine looking at chat {0} times and taking damage. Imagine being that person.'});
-//   Count.create({name: 'promisesKept', message: 'Kept at least {0} promises made to chat.', addition: 'Niko has kept a promise he made to chat {0} times. I guess we can\'t be disappointed in him today.'});
-//   Count.create({name: 'promisesBroken', message: 'Broken {0} promises to chat.', addition: 'Niko has broken a promise he made to chat {0} times. We\'re not mad, just disappointed.'});
-// })();
+(async () => {
+  await sequelize.sync();
+  // Count.create({name: 'chatDamage', message: 'Taken damage due to chat at least {0} times.', addition: 'Imagine looking at chat {0} times and taking damage. Imagine being that person.'});
+  // Count.create({name: 'promisesKept', message: 'Kept at least {0} promises made to chat.', addition: 'Niko has kept a promise he made to chat {0} times. I guess we can\'t be disappointed in him today.'});
+  // Count.create({name: 'promisesBroken', message: 'Broken {0} promises to chat.', addition: 'Niko has broken a promise he made to chat {0} times. We\'re not mad, just disappointed.'});
+})();
 
 module.exports = Count;
