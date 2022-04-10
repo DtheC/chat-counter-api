@@ -43,6 +43,6 @@ block content
 
   h2 Nightbot Commands
   h3 Get a message with the count:
-  pre $(eval const api = $(urlfetch json #{windowUrl}/get?name=chatDamage); api.message )
+  pre $(eval const api = $(urlfetch json https://#{windowUrl}/get?name=#{countData.name}); api.message )
   h3 Add one to the count:
-  pre $(eval const api = $(urlfetch json #{windowUrl}/add?name=chatDamage); api.message )
+  pre $(eval const api = $(urlfetch json https://#{windowUrl}/add?name=#{countData.name}); api.message )
