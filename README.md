@@ -2,12 +2,11 @@ chat-counter-api
 
 To deploy:
 
-- Install Heroku CLI (and git if needed) 
+- Install Heroku CLI (and git if needed)
 	https://devcenter.heroku.com/articles/heroku-cli
-- Fork repo
 - Clone repo to local
 - Open folder where you cloned the repo in terminal
-- heroku create
+- `heroku create`
 - `git push heroku main`
 - `heroku addons:create heroku-postgresql:hobby-dev`
 - Go to the heroku dashboard and find your app:
