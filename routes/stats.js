@@ -7,8 +7,12 @@ router.get('/', async function(req, res, next) {
     const counts = await sequelize.models.Count.findAll({
       where: {
         showInStats: true
-      },
-      order: [['orderInStats', 'ASC']]
+      }
+    });
+    counts.sort((a, b) => {
+      const i = a.orderInStats - b.orderInStats;
+      if (i !== 0) return i;
+      return a.name.localeCompare(b.name);
     });
     res.json({
       message: counts.map(x => x.getStat()).join(' ')
