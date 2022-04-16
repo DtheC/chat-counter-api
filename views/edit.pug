@@ -9,33 +9,33 @@ block content
       label.formbuilder-text-label
       | API Key
       br
-      input.form-control(type='text' placeholder='API Key (required to change data)' name='apiKey' access='false' autocomplete="off")
+      input.form-control(type='text' placeholder='API Key (required to change data)' name='apiKey' autocomplete="off")
     .formbuilder-text.form-group.field-text-1642906452686
       label.formbuilder-text-label
         | !add Message
         br
-        input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' access='false' value=countData.addition)
+        input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' value=countData.addition)
     .formbuilder-text.form-group.field-text-1642906506876
       label.formbuilder-text-label
         | !stats Message
         br
-      input.form-control(type='text' placeholder='Has been done {0} times.' name='message' access='false' value=countData.message)
+      input.form-control(type='text' placeholder='Has been done {0} times.' name='message' value=countData.message)
     .formbuilder-number.form-group.field-number-1642906564934
       label.formbuilder-number-label
         | Current Value
         br
-        input.form-control.form-control-number(type='number' placeholder='0' name='amount' access='false' value=countData.amount)
+        input.form-control.form-control-number(type='number' placeholder='0' name='amount' value=countData.amount)
     .formbuilder-number.form-group.field-number-16429065642
       label.formbuilder-number-label
         | Show in !stats?
         br
-        input.form-control.form-control-number(type='checkbox' name='showInStats' access='false' value=countData.showInStats checked=countData.showInStats)
+        input.form-control.form-control-number(type='checkbox' name='showInStats' checked=countData.showInStats)
     .form-button-row
       .formbuilder-button.form-group.field-submit
-        button.submit.btn-default.btn(type='submit' name='action' value='submit' access='false' style='default') Submit Changes
+        button.submit.btn-default.btn(type='submit' name='action' value='submit' style='default') Submit Changes
         br
       .formbuilder-button.form-group.field-delete
-        button.delete.btn-danger.btn(type='submit' name='action' value='delete' access='false' style='danger') Delete
+        button.delete.btn-danger.btn(type='submit' name='action' value='delete' style='danger') Delete
 
   br
   br
