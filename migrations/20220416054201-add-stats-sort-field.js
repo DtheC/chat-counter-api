@@ -2,7 +2,14 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn( 'Counts', 'orderInStats', Sequelize.INTEGER );
+    await queryInterface.describeTable('Counts')
+    .then(tableDefinition => {
+      if (tableDefinition.orderInStats) {
+        return Promise.resolve();
+      }
+
+      return queryInterface.addColumn('Counts', 'orderInStats', Sequelize.INTEGER );
+    });
   },
 
   async down (queryInterface, Sequelize) {
