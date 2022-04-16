@@ -8,7 +8,7 @@ router.get('/', async function(req, res, next) {
       where: {
         showInStats: true
       },
-      order: ['orderInStats']
+      order: [['orderInStats', 'ASC']]
     });
     res.json({
       message: counts.map(x => x.getStat()).join(' ')
