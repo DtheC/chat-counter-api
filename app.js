@@ -15,7 +15,7 @@ const addRouter = require('./routes/add');
 const setRouter = require('./routes/set');
 const statsRouter = require('./routes/stats');
 
-require('./data-models/count');
+require('./models/count');
 
 const sequelize = require('./sequelize');
 
