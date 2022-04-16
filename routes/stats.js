@@ -7,7 +7,8 @@ router.get('/', async function(req, res, next) {
     const counts = await sequelize.models.Count.findAll({
       where: {
         showInStats: true
-      }
+      },
+      order: ['orderInStats']
     });
     res.json({
       message: counts.map(x => x.getStat()).join(' ')
