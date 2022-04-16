@@ -9,7 +9,7 @@ router.post('/', async function(req, res, next) {
     res.json({message: 'API key missing or incorrect'});
     return;
   }
-  const {name, amount, message, addition, action} = req.body;
+  const {name, amount, message, addition, action, orderInStats} = req.body;
   // As the value of a checkbox is 'on' if ticked or just not send in the form body at all if unticked
   // we use a !! to confirm  what value the showInStats field should be.
   const showInStats = !!req.body.showInStats;
@@ -29,9 +29,9 @@ router.post('/', async function(req, res, next) {
         }
       });
     } else if(action === 'create') {
-      await sequelize.models.Count.create({name, amount, message, addition, showInStats});
+      await sequelize.models.Count.create({name, amount, message, addition, showInStats, orderInStats});
     } else {
-      await sequelize.models.Count.update({name, amount, message, addition, showInStats}, {
+      await sequelize.models.Count.update({name, amount, message, addition, showInStats, orderInStats}, {
         where: {
           name: name
         }

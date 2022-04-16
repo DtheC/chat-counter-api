@@ -15,3 +15,8 @@ To deploy:
 - Add a new config var called "API_KEY". Value can be whatever you want this will be used when you edit values in the frontend for the database.
 
 Done! Hopefully.
+
+Migrations:
+Once migration is created open bash in the heroku dashboard
+- `npm i sequelize-cli`
+- `sequelize-cli db:migrate`
