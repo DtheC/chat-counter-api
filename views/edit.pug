@@ -3,33 +3,44 @@ extends layout
 block content
   h1= countData.name
   p Any use of {0} in the Add or Stats message will be replaced with the current value of the counter when called in Nightbot.
-  form(action="/set", method="post")
+  form(action="/set" method="post")
     input(type='hidden' name='name' value=countData.name access='false')
     .formbuilder-text.form-group.field-text-1642906452686
       label.formbuilder-text-label
       | API Key
       br
       input.form-control(type='text' placeholder='API Key (required to change data)' name='apiKey' autocomplete="off")
+
     .formbuilder-text.form-group.field-text-1642906452686
       label.formbuilder-text-label
         | !add Message
         br
         input.form-control(type='text' placeholder='Added 1 to counter. Counter is now: {0}.' name='addition' value=countData.addition)
+
     .formbuilder-text.form-group.field-text-1642906506876
       label.formbuilder-text-label
         | !stats Message
         br
       input.form-control(type='text' placeholder='Has been done {0} times.' name='message' value=countData.message)
+
     .formbuilder-number.form-group.field-number-1642906564934
       label.formbuilder-number-label
         | Current Value
         br
         input.form-control.form-control-number(type='number' placeholder='0' name='amount' value=countData.amount)
+
+    .formbuilder-number.form-group.field-number-1642906564934
+      label.formbuilder-number-label
+        | Sort Order For Stats
+        br
+        input.form-control.form-control-number(type='number' placeholder='0' name='orderInStats' value=countData.orderInStats)
+
     .formbuilder-number.form-group.field-number-16429065642
       label.formbuilder-number-label
         | Show in !stats?
         br
         input.form-control.form-control-number(type='checkbox' name='showInStats' checked=countData.showInStats)
+
     .form-button-row
       .formbuilder-button.form-group.field-submit
         button.submit.btn-default.btn(type='submit' name='action' value='submit' style='default') Submit Changes
