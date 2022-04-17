@@ -3,7 +3,7 @@ var router = express.Router();
 const sequelize = require('../sequelize');
 
 const getStatsPreview = (counts) => {
-  return counts.filter(x => x.showInStats).sort((x, y) => x.orderInStats - y.orderInStats).map(x => x.getStat()).join(' ');
+  return counts.filter(x => x.showInStats).map(x => x.getStat()).join(' ');
 }
 
 /* GET home page. */

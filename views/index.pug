@@ -18,8 +18,16 @@ block content
   h4 Preview: 
   pre #{statsPreview}
 
+mixin showInStats(showInStats)
+  if showInStats
+    | - in !stats
+  else
+    |
 
 mixin item(val)
   .item-row
     a(href=`/edit/${val.name}`)
-      p=val.name
+      p.
+        #{val.name} #[+showInStats(val.showInStats)]
+
+
